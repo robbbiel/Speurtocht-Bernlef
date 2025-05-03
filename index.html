@@ -16,7 +16,7 @@
             margin: 10px;
         }
         #resultaat {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             margin-top: 20px;
         }
@@ -26,7 +26,7 @@
     </style>
 </head>
 <body>
-    <input type="text" id="codeInput" placeholder="Voer het wachtwoord in..." size="70">
+    <input type="text" id="codeInput" placeholder="Voer het wachtwoord in..." size="50">
     <button onclick="controleerCode()">Controleer</button>
 
     <p id="resultaat"></p>
@@ -35,18 +35,19 @@
         function controleerCode() {
             const juisteWachtwoord = "MOTTEN";
 
-            const binaireTekst = "00100000 01000010 01110010 01100101 01100101 01100100 01110100 01100101 01100111 01110010 01100001 01100001 01100100 00111010 00110101 00110011 00101110 00110010 00110000 00110100 00110001 00110111 00101100 00100000 00100000 01001100 01100101 01101110 01100111 01110100 01100101 01100111 01110010 01100001 01100001 01100100 00111010 00100000 00110101 00101110 00110111 00111001 00110111 00110100 00110011 00111001";
+            const binaireCode = "00100000 01000010 01110010 01100101 01100101 01100100 01110100 01100101 01100111 01110010 01100001 01100001 01100100 00111010 00110101 00110011 00101110 00110010 00110000 00110100 00110001 00110111 00101100 00100000 00100000 01001100 01100101 01101110 01100111 01110100 01100101 01100111 01110010 01100001 01100001 01100100 00111010 00100000 00110101 00101110 00110111 00111001 00110111 00110100 00110011 00111001";
 
-            const ingevoerdeCode = document.getElementById("codeInput").value.trim().toUpperCase();
+            const input = document.getElementById("codeInput").value.trim().toUpperCase();
+            const output = document.getElementById("resultaat");
 
-            if (ingevoerdeCode === juisteWachtwoord) {
-                document.getElementById("resultaat").innerHTML = binaireTekst;
-                document.getElementById("resultaat").style.color = "green";
-                document.getElementById("resultaat").classList.remove("error");
+            if (input === juisteWachtwoord) {
+                output.textContent = binaireCode;
+                output.style.color = "green";
+                output.classList.remove("error");
             } else {
-                document.getElementById("resultaat").innerHTML = "❌ Fout! Probeer het opnieuw.";
-                document.getElementById("resultaat").style.color = "red";
-                document.getElementById("resultaat").classList.add("error");
+                output.textContent = "❌ Fout! Probeer het opnieuw.";
+                output.style.color = "red";
+                output.classList.add("error");
             }
         }
     </script>
